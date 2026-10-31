@@ -1,5 +1,7 @@
 # CraftaloBGR
 
+*A background remover for designers.*
+
 CraftaloBGR is a browser-based studio for removing image backgrounds, comparing cutouts, choosing a backdrop, and exporting images or ZIP archives. Background removal runs on the user's device with WebGPU or WASM.
 
 ## Requirements
