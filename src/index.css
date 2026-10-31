@@ -1,0 +1,226 @@
+@import "tailwindcss";
+
+/* ─── Craftalo Brand Tokens ─── */
+:root {
+  --gold-light:  #e8c44a;
+  --gold:        #c9a227;
+  --gold-dark:   #a07820;
+  --gold-dim:    rgba(201, 162, 39, 0.15);
+  --gold-glow:   rgba(201, 162, 39, 0.25);
+  --surface-0:   #0c0c0c;
+  --surface-1:   #111111;
+  --surface-2:   #181818;
+  --surface-3:   #222222;
+  --border:      rgba(255, 255, 255, 0.07);
+  --border-md:   rgba(255, 255, 255, 0.12);
+  --text-primary: #f0f0f0;
+  --text-muted:   rgba(240, 240, 240, 0.45);
+  --text-faint:   rgba(240, 240, 240, 0.22);
+}
+
+/* ─── Base ─── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--surface-0);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+@supports (min-height: 100svh) {
+  body,
+  #root {
+    min-height: 100svh;
+  }
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 100px; }
+
+/* ─── Display Typography ─── */
+.display-xl {
+  font-size: clamp(3.2rem, 7.5vw, 7rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.93;
+}
+@media (max-width: 640px) {
+  .display-xl {
+    font-size: clamp(2.15rem, 8.5vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+}
+.display-lg {
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.97;
+}
+.display-md {
+  font-size: clamp(1.5rem, 2.5vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+/* ─── Gold Utilities ─── */
+.text-gold   { color: var(--gold-light); }
+.bg-gold     { background: var(--gold); }
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #e8c44a 0%, #c9a227 40%, #e8c44a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-white {
+  background: linear-gradient(160deg, #ffffff 0%, rgba(255,255,255,0.55) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Glass / Surface ─── */
+.glass {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid var(--border);
+}
+
+.glass-md {
+  background: rgba(255,255,255,0.045);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid var(--border-md);
+}
+
+.surface-1 { background: var(--surface-1); border: 1px solid var(--border); }
+.surface-2 { background: var(--surface-2); border: 1px solid var(--border); }
+
+/* ─── Gold Glow ─── */
+.gold-glow {
+  box-shadow: 0 0 40px rgba(201,162,39,0.18), 0 0 80px rgba(201,162,39,0.08);
+}
+.gold-glow-sm {
+  box-shadow: 0 0 20px rgba(201,162,39,0.2);
+}
+
+/* ─── Checkerboard Patterns ─── */
+.checker {
+  background-color: #181818;
+  background-image:
+    linear-gradient(45deg, #111 25%, transparent 25%),
+    linear-gradient(-45deg, #111 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #111 75%),
+    linear-gradient(-45deg, transparent 75%, #111 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+
+.checker-light {
+  background-color: #f0f0f0;
+  background-image:
+    linear-gradient(45deg, #d8d8d8 25%, transparent 25%),
+    linear-gradient(-45deg, #d8d8d8 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #d8d8d8 75%),
+    linear-gradient(-45deg, transparent 75%, #d8d8d8 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+
+/* ─── Split handle ─── */
+.split-handle {
+  width: 2px;
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 0 12px rgba(255,255,255,0.4), 0 0 30px rgba(255,255,255,0.15);
+}
+
+/* ─── Buttons ─── */
+.btn-gold {
+  background: linear-gradient(135deg, #e8c44a 0%, #c9a227 100%);
+  color: #0c0c0c;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-gold:hover:not(:disabled) {
+  background: linear-gradient(135deg, #f0d060 0%, #ddb82e 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgba(201,162,39,0.35), 0 2px 8px rgba(0,0,0,0.3);
+}
+.btn-gold:active { transform: translateY(0); }
+
+.btn-ghost {
+  background: transparent;
+  color: rgba(240, 240, 240, 0.55);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.05);
+  color: #f0f0f0;
+  border-color: rgba(255,255,255,0.18);
+}
+
+.btn-ghost-gold {
+  background: transparent;
+  color: var(--gold-light);
+  border: 1px solid rgba(201,162,39,0.3);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-ghost-gold:hover {
+  background: var(--gold-dim);
+  border-color: rgba(201,162,39,0.55);
+}
+
+/* ─── Divider ─── */
+.divider { border-color: var(--border); }
+
+/* ─── Fade-up animation ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* ─── Gold line underline accent ─── */
+.gold-underline {
+  position: relative;
+  display: inline-block;
+}
+.gold-underline::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+/* ─── Section grid pattern ─── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
